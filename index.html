@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suivi d'apprentissage du japonais</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Suivi d'apprentissage du japonais</h1>
+      <p class="date" id="currentDate"></p>
+    </header>
+
+    <div class="dashboard">
+      <div class="activity-box">
+        <h2>Activités du jour</h2>
+
+        <div class="activity-buttons">
+          <button class="activity-btn" data-activity="nhk">Lecture article NHK</button>
+          <button class="activity-btn" data-activity="asahi">Lecture article Asahi</button>
+          <button class="activity-btn" data-activity="drama">Visionnage drama</button>
+          <button class="activity-btn" data-activity="anime">Visionnage animé</button>
+          <button class="activity-btn" data-activity="youtube">Visionnage vidéo youtube</button>
+          <button class="activity-btn" data-activity="anki">Anki</button>
+        </div>
+
+        <div class="badges-container">
+          <h3>Activités sélectionnées</h3>
+          <div id="badgesArea" class="badges-area"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
