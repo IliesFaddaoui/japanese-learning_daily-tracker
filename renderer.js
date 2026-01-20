@@ -21,6 +21,64 @@ function displayCurrentDate() {
   document.getElementById('currentDate').textContent = today.toLocaleDateString('fr-FR', options);
 }
 
+function renderCalendar() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth();
+
+  console.log('renderCalendar - allActivitiesData:', allActivitiesData);
+
+  const monthNames = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
+                      'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+  document.getElementById('calendarMonth').textContent = `${monthNames[month]} ${year}`;
+
+  const firstDay = new Date(year, month, 1);
+  const lastDay = new Date(year, month + 1, 0);
+  const daysInMonth = lastDay.getDate();
+  const startDayOfWeek = firstDay.getDay();
+  const adjustedStartDay = startDayOfWeek === 0 ? 6 : startDayOfWeek - 1;
+
+  const calendarElement = document.getElementById('calendar');
+  calendarElement.innerHTML = '';
+
+  const dayHeaders = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+  dayHeaders.forEach(dayName => {
+    const headerDiv = document.createElement('div');
+    headerDiv.className = 'calendar-day-header';
+    headerDiv.textContent = dayName;
+    calendarElement.appendChild(headerDiv);
+  });
+
+  for (let i = 0; i < adjustedStartDay; i++) {
+    const emptyDiv = document.createElement('div');
+    emptyDiv.className = 'calendar-day empty';
+    calendarElement.appendChild(emptyDiv);
+  }
+
+  for (let day = 1; day <= daysInMonth; day++) {
+    const dayDiv = document.createElement('div');
+    dayDiv.className = 'calendar-day';
+    dayDiv.textContent = day;
+
+    const dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+
+    const isToday = dateString === getTodayDate();
+    const hasActivity = allActivitiesData[dateString] && Object.keys(allActivitiesData[dateString]).length > 0;
+
+    console.log(`Day ${day} (${dateString}): isToday=${isToday}, hasActivity=${hasActivity}, data=`, allActivitiesData[dateString]);
+
+    if (isToday) {
+      dayDiv.classList.add('today');
+    } else if (hasActivity) {
+      dayDiv.classList.add('has-activity');
+    } else {
+      dayDiv.classList.add('no-activity');
+    }
+
+    calendarElement.appendChild(dayDiv);
+  }
+}
+
 function renderBadges() {
   const badgesArea = document.getElementById('badgesArea');
   badgesArea.innerHTML = '';
@@ -77,6 +135,7 @@ async function loadActivities() {
     const today = getTodayDate();
     currentActivities = allActivitiesData[today] || {};
     renderBadges();
+    renderCalendar();
   } catch (error) {
     console.error('Error loading activities:', error);
   }
@@ -87,6 +146,7 @@ async function saveActivities() {
     const today = getTodayDate();
     allActivitiesData[today] = currentActivities;
     await window.electronAPI.saveActivities(allActivitiesData);
+    renderCalendar();
   } catch (error) {
     console.error('Error saving activities:', error);
   }

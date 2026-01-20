@@ -4,18 +4,20 @@ const fs = require('fs');
 
 const DATA_FILE = path.join(app.getPath('userData'), 'activities.json');
 
+console.log('Activities file location:', DATA_FILE);
+
 function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 1200,
     height: 800,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
+      preload: path.join(__dirname, 'src', 'infrastructure', 'electron', 'preload.js'),
       contextIsolation: true,
       nodeIntegration: false
     }
   });
 
-  mainWindow.loadFile('index.html');
+  mainWindow.loadFile(path.join(__dirname, 'dist', 'index.html'));
   mainWindow.webContents.openDevTools();
 }
 
