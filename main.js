@@ -18,7 +18,11 @@ function createWindow() {
   });
 
   mainWindow.loadFile(path.join(__dirname, 'dist', 'index.html'));
-  mainWindow.webContents.openDevTools();
+
+  // Open DevTools only in development
+  if (!app.isPackaged) {
+    mainWindow.webContents.openDevTools();
+  }
 }
 
 app.whenReady().then(() => {
