@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '../ui/card';
+import { Hourglass, Newspaper, Film } from 'lucide-react';
 
 export const Statistics = ({ statistics }) => {
   const formatVideoTime = () => {
@@ -20,19 +21,19 @@ export const Statistics = ({ statistics }) => {
     {
       label: "Jours d'affilée",
       value: statistics.maxStreak,
-      icon: "🔥",
+      Icon: Hourglass,
       color: "text-orange-500"
     },
     {
       label: "Articles lus",
       value: statistics.totalArticles,
-      icon: "📰",
+      Icon: Newspaper,
       color: "text-blue-500"
     },
     {
       label: "Heures de vidéo",
       value: formatVideoTime(),
-      icon: "🎬",
+      Icon: Film,
       color: "text-purple-500"
     }
   ];
@@ -45,7 +46,7 @@ export const Statistics = ({ statistics }) => {
       <CardContent className="space-y-4">
         {stats.map((stat, index) => (
           <div key={index} className="bg-muted rounded-lg p-6 flex items-center gap-4 hover:bg-muted/80 transition-colors">
-            <div className="text-5xl">{stat.icon}</div>
+            <stat.Icon className="text-black" size={48} strokeWidth={2} />
             <div className="flex-1">
               <div className="text-sm font-medium text-muted-foreground mb-1">{stat.label}</div>
               <div className={`text-3xl font-bold ${stat.color}`}>{stat.value}</div>
