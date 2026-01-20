@@ -16,7 +16,7 @@ export const DayDetailsModal = ({ dailyLog, date, onClose }) => {
   const formatDate = (dateString) => {
     const [year, month, day] = dateString.split('-');
     const date = new Date(year, month - 1, day);
-    return date.toLocaleDateString('fr-FR', {
+    return date.toLocaleDateString('en-US', {
       weekday: 'long',
       day: 'numeric',
       month: 'long',
@@ -28,7 +28,7 @@ export const DayDetailsModal = ({ dailyLog, date, onClose }) => {
     <Dialog open={!!dailyLog} onOpenChange={onClose}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Activités du jour</DialogTitle>
+          <DialogTitle>Daily Activities</DialogTitle>
           <DialogDescription>
             {formatDate(date)}
           </DialogDescription>
@@ -52,7 +52,7 @@ export const DayDetailsModal = ({ dailyLog, date, onClose }) => {
 
         {activities.length === 0 && (
           <div className="text-center text-muted-foreground py-8">
-            Aucune activité enregistrée
+            No activities recorded
           </div>
         )}
       </DialogContent>

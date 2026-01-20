@@ -10,7 +10,7 @@ export const Calendar = ({ logsMap, currentDate }) => {
   const todayDateString = getTodayDateString();
   const [selectedDate, setSelectedDate] = useState(null);
 
-  const dayHeaders = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+  const dayHeaders = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
   const handleDayClick = (dateString) => {
     if (logsMap[dateString]?.hasActivities()) {

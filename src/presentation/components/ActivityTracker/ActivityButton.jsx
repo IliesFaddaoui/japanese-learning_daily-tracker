@@ -6,7 +6,7 @@ export const ActivityButton = ({ type, label, onClick }) => {
     <Button
       variant="default"
       size="lg"
-      className="w-full"
+      className="w-full bg-red-800 hover:bg-red-900 text-white"
       data-activity={type}
       onClick={onClick}
     >

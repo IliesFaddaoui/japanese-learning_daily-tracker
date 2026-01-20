@@ -8,11 +8,11 @@ export const ActivityType = {
 };
 
 export const ActivityLabels = {
-  [ActivityType.NHK]: 'Lecture article NHK',
-  [ActivityType.ASAHI]: 'Lecture article Asahi',
-  [ActivityType.DRAMA]: 'Visionnage drama',
-  [ActivityType.ANIME]: 'Visionnage animé',
-  [ActivityType.YOUTUBE]: 'Visionnage vidéo youtube',
+  [ActivityType.NHK]: 'NHK Article Reading',
+  [ActivityType.ASAHI]: 'Asahi Article Reading',
+  [ActivityType.DRAMA]: 'Drama Watching',
+  [ActivityType.ANIME]: 'Anime Watching',
+  [ActivityType.YOUTUBE]: 'YouTube Video Watching',
   [ActivityType.ANKI]: 'Anki',
 };
 

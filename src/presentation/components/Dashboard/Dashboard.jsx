@@ -22,29 +22,31 @@ export const Dashboard = ({
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
-    <div className="max-w-[1400px] mx-auto h-screen flex flex-col p-5">
-      <header className="text-center text-white mb-6">
-        <h1 className="text-5xl mb-2.5 drop-shadow-[2px_2px_4px_rgba(0,0,0,0.2)]">Suivi d'apprentissage du japonais</h1>
-        <p className="text-xl opacity-90">{formatDate(currentDate)}</p>
+    <div className="max-w-[1400px] mx-auto min-h-screen flex flex-col p-5">
+      <header className="text-center text-red-400 mb-6">
+        <h1 className="text-3xl md:text-5xl mb-2.5">Japanese Learning Tracker</h1>
+        <p className="text-lg md:text-xl opacity-90">{formatDate(currentDate)}</p>
       </header>
 
-      <div className="flex-1 grid grid-cols-2 gap-5 overflow-hidden mb-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5">
         <Calendar logsMap={logsMap} currentDate={currentDate} />
         <Statistics statistics={statistics} />
       </div>
 
+      <div className="flex-1 lg:mb-0 mb-24"></div>
+
       <Button
         size="lg"
-        className="w-full max-w-md mx-auto"
+        className="fixed lg:static bottom-4 left-4 right-4 lg:w-auto lg:max-w-md mx-auto lg:mb-5 rounded-md shadow-lg lg:shadow-sm z-50"
         onClick={() => setIsDrawerOpen(true)}
       >
-        Ajouter des activités
+        Add Activities
       </Button>
 
       <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
         <DrawerContent>
           <DrawerHeader>
-            <DrawerTitle>Activités du jour</DrawerTitle>
+            <DrawerTitle>Today's Activities</DrawerTitle>
           </DrawerHeader>
           <div className="p-4">
             <ActivityTracker

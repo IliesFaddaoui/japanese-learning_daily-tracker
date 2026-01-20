@@ -19,19 +19,19 @@ export const Statistics = ({ statistics }) => {
 
   const stats = [
     {
-      label: "Jours d'affilée",
+      label: "Days Streak",
       value: statistics.maxStreak,
       Icon: Hourglass,
       color: "text-orange-500"
     },
     {
-      label: "Articles lus",
+      label: "Articles Read",
       value: statistics.totalArticles,
       Icon: Newspaper,
       color: "text-blue-500"
     },
     {
-      label: "Heures de vidéo",
+      label: "Video Time",
       value: formatVideoTime(),
       Icon: Film,
       color: "text-purple-500"
@@ -41,7 +41,7 @@ export const Statistics = ({ statistics }) => {
   return (
     <Card className="h-full">
       <CardHeader>
-        <CardTitle className="text-3xl text-center">Statistiques</CardTitle>
+        <CardTitle className="text-3xl text-center">Statistics</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         {stats.map((stat, index) => (

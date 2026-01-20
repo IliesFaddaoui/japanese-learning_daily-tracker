@@ -8,5 +8,5 @@ export const getTodayDateString = () => {
 
 export const formatDate = (date) => {
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  return date.toLocaleDateString('fr-FR', options);
+  return date.toLocaleDateString('en-US', options);
 };
