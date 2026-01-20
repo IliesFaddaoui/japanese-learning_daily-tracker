@@ -1,16 +1,19 @@
 {
   "name": "learning-daily-tracker",
+  "productName": "Suivi d'apprentissage du japonais",
   "version": "1.0.0",
-  "description": "",
+  "description": "Application de suivi quotidien pour l'apprentissage du japonais",
   "main": "main.js",
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",
     "start": "npm run build && electron .",
+    "dist": "npm run build && electron-builder",
+    "dist:mac": "npm run build && electron-builder --mac",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["japanese", "learning", "tracker"],
+  "author": "Ilies",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
@@ -18,20 +21,69 @@
     "@babel/plugin-transform-modules-commonjs": "^7.28.6",
     "@babel/preset-env": "^7.28.6",
     "@babel/preset-react": "^7.28.5",
-    "@tailwindcss/postcss": "^4.1.18",
     "autoprefixer": "^10.4.23",
     "babel-loader": "^10.0.0",
     "css-loader": "^7.1.2",
     "electron": "^40.0.0",
+    "electron-builder": "^26.4.0",
     "html-webpack-plugin": "^5.6.6",
     "postcss": "^8.5.6",
     "postcss-loader": "^8.2.0",
     "style-loader": "^4.0.0",
+    "tailwindcss": "^3.4.19",
     "webpack": "^5.104.1",
     "webpack-cli": "^6.0.1"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-separator": "^1.1.8",
+    "@radix-ui/react-slot": "^1.2.4",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.562.0",
     "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "react-dom": "^19.2.3",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss-animate": "^1.0.7",
+    "vaul": "^1.1.2"
+  },
+  "build": {
+    "appId": "com.ilies.learning-daily-tracker",
+    "productName": "Suivi d'apprentissage du japonais",
+    "files": [
+      "dist/**/*",
+      "main.js",
+      "renderer.js",
+      "index.html",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]
+        }
+      ],
+      "category": "public.app-category.education",
+      "icon": "build/icon.icns"
+    },
+    "dmg": {
+      "title": "Suivi d'apprentissage du japonais",
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    }
   }
 }

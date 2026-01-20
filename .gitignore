@@ -22,3 +22,17 @@ build/
 
 # Electron
 out/
+
+# Electron-builder output
+release/
+*.dmg
+*.dmg.blockmap
+*.zip
+*.exe
+*.AppImage
+*.deb
+*.rpm
+*.snap
+
+# Electron-builder cache
+.electron-builder-cache/

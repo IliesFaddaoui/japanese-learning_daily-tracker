@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card, CardHeader, CardTitle, CardContent } from '../ui/card';
 
 export const Statistics = ({ statistics }) => {
   const formatVideoTime = () => {
@@ -37,20 +38,21 @@ export const Statistics = ({ statistics }) => {
   ];
 
   return (
-    <div className="bg-white rounded-2xl p-8 shadow-[0_10px_30px_rgba(0,0,0,0.2)] h-full">
-      <h2 className="text-gray-800 mb-5 text-3xl text-center font-semibold">Statistiques</h2>
-
-      <div className="flex flex-col gap-6">
+    <Card className="h-full">
+      <CardHeader>
+        <CardTitle className="text-3xl text-center">Statistiques</CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-4">
         {stats.map((stat, index) => (
-          <div key={index} className="bg-gray-50 rounded-xl p-6 flex items-center gap-4 hover:shadow-md transition-shadow duration-300">
+          <div key={index} className="bg-muted rounded-lg p-6 flex items-center gap-4 hover:bg-muted/80 transition-colors">
             <div className="text-5xl">{stat.icon}</div>
             <div className="flex-1">
-              <div className="text-gray-600 text-sm font-medium mb-1">{stat.label}</div>
+              <div className="text-sm font-medium text-muted-foreground mb-1">{stat.label}</div>
               <div className={`text-3xl font-bold ${stat.color}`}>{stat.value}</div>
             </div>
           </div>
         ))}
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
